@@ -1,28 +1,53 @@
-import java.util.Scanner;
+import java.util.*;
 
-public class HashFunction {
+public class hash {
 
-    public static void main(String[] args) {
+    public static void hash(String name, int size){
+
+        int sum = 0;
+
+        for(int i = 0 ; i < name.length() ; i++){
+
+            int ascii = name.charAt(i);
+
+            sum += ascii;
+
+        }
+
+        int pos = sum % size;
+
+        System.out.println("ASII Sum = " + sum);
+
+        System.out.println("Hash Position is " + pos);
+
+    }
+
+    public static void main(String[] args){
 
         Scanner sc = new Scanner(System.in);
 
-        int tableSize, key, hashIndex;
+        System.out.print("Enter the Name: ");
 
-        System.out.println(" Hash Function ");
+        String name = sc.nextLine();
 
-        System.out.print("Enter Table Size: ");
-        tableSize = sc.nextInt();
+        System.out.print("Enter the Size of Hash Table: ");
 
-        System.out.print("Enter Key: ");
-        key = sc.nextInt();
+        int size = sc.nextInt();
 
-        hashIndex = key % tableSize;
+        if(size <= 0){
 
-        System.out.println("\nResult");
-        System.out.println("Key = " + key);
-        System.out.println("Table Size = " + tableSize);
-        System.out.println("Hash Index = " + hashIndex);
+            System.out.println("The Size of Hash Table Must be Greater Than 0");
+
+        }
+
+        else {
+
+            hash(name, size);
+
+        }
 
         sc.close();
+
     }
+
 }
